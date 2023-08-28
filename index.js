@@ -29,4 +29,9 @@ const DisplayPhones = Phones =>{
         PhoneCardContainer.appendChild(PhoneCard);
     });
 }
+
+
+const HandleSearch = () => {
+  console.log('everything fine');
+}
 LoadData()
