@@ -16,6 +16,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 
+    <!-- -------- Coustom Classes For Tailwind CSS Frame Work -------- -->
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+                "primary-heading-color": "#403F3F",
+                "primary-btn-color": "#0D6EFD",
+              }
+            }
+          }
+        }
+      </script>
+
+
      <!-- -------- Link Of Poppins Font From Google Fonts -------- -->
      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -23,13 +39,50 @@
      <!-- -------- Link Of Fav Icon -------- -->
      <link rel="shortcut icon" href="Image/pngwing 1.png" type="image/x-icon">
 
-     
+
     <!-- -------- Website Title --------  -->
     <title>Phone Hunter</title>
 </head>
 <body>
+
+
     <!-- -------- Header Section Start From Here -------- -->
-    <header></header>
+    <header class="pt-10">
+
+
+        <!-- -------- Navigation Bar Section Start From Here -------- -->
+        <nav class="container mx-auto">
+
+
+            <!-- -------- Navbar Container Start From Here -------- -->
+            <div class="navbar bg-base-100">
+
+
+                <!-- -------- Navbar Title Start From Here -------- -->
+                <div class="flex-1">
+                  <h1 class="text-2xl font-bold text-primary-heading-color">Hot Gadgets</h1>
+                </div>
+                <!-- -------- Navbar Title Ends Here -------- -->
+
+
+                <!-- -------- Navbar Button Container Start From Here -------- -->
+                <div class="flex-none">
+                  <button class="text-white text-lg font-semibold bg-primary-btn-color py-3 px-7 rounded-lg">
+                    Sign Up
+                  </button>
+                </div>
+                <!-- -------- Navbar Button Container Start From Here -------- -->
+
+
+              </div>
+              <!-- -------- Navbar Container Ends Here -------- -->
+
+
+        </nav>
+        <!-- -------- Navigation Bar Section Ends Here -------- -->
+
+
+    </header>
     <!-- -------- Header Section Ends Here -------- -->
 
 
