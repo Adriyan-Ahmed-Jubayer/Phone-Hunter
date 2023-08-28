@@ -1,6 +1,6 @@
 //   -------- Accessing Data From API --------  //
-const LoadData = async () =>{
-    const Response = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone')
+const LoadData = async (SearchText) =>{
+    const Response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${SearchText}`)
     const Data = await Response.json();
     const Phones = Data.data;
     DisplayPhones(Phones);
@@ -9,6 +9,7 @@ const LoadData = async () =>{
 
 const DisplayPhones = Phones =>{
     const PhoneCardContainer = document.getElementById('phones-card-container');
+    PhoneCardContainer.textContent = "";
     Phones.forEach(phone => {
         console.log(phone);
         const PhoneCard = document.createElement('div');
@@ -31,7 +32,10 @@ const DisplayPhones = Phones =>{
 }
 
 
-const HandleSearch = () => {
-  console.log('everything fine');
+const HandleSearch = () =>{
+  const SearchFeild = document.getElementById('search-feild');
+  const SearchText = SearchFeild.value;
+  console.log(SearchText);
+  LoadData(SearchText)
 }
 LoadData()
