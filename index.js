@@ -1,5 +1,5 @@
 //   -------- Accessing Data From API --------  //
-const LoadData = async (SearchText) =>{
+const LoadData = async (SearchText = '13') =>{
     const Response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${SearchText}`)
     const Data = await Response.json();
     const Phones = Data.data;
@@ -19,7 +19,6 @@ const DisplayPhones = Phones =>{
     }
     Phones = Phones.slice(0,12);
     Phones.forEach(phone => {
-        console.log(phone);
         const PhoneCard = document.createElement('div');
         PhoneCard.classList = `card bg-base-100 shadow-xl`;
         PhoneCard.innerHTML = `
@@ -30,7 +29,7 @@ const DisplayPhones = Phones =>{
               <h2 class="card-title">${phone.phone_name}</h2>
               <p>There are many variations of passages of available, but the majority have suffered</p>
               <div class="card-actions">
-                <button class="btn btn-primary">Show Details</button>
+                <button onclick="HandleShow('${phone.slug}'); show_details_modal.showModal()" class="btn btn-primary">Show Details</button>
               </div>
             </div>
         `;
@@ -40,12 +39,27 @@ const DisplayPhones = Phones =>{
       ToggleLoadingSpinner(false)
 }
 
+const HandleShow = async (ID) => {
+  console.log('clicked', ID);
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${ID}`);
+  const data = await res.json();
+  const Details = data.data;
+  ShowPhoneDetails(Details)
+}
+
+const ShowPhoneDetails = (Details) => {
+  console.log(Details);
+  const PhoneName = document.getElementById('show-detail-phone-name');
+  const ImgContainer = document.getElementById('show-detail-img-container');
+  ImgContainer.innerHTML = `<img src="${Details.image}" alt="Phone" rounded-xl class="mx-auto bg-cyan-200 py-5" />`
+  PhoneName.innerText = Details.name;
+  show_details_modal.showModal()
+}
 
 const HandleSearch = () =>{
   ToggleLoadingSpinner(true)
   const SearchFeild = document.getElementById('search-feild');
   const SearchText = SearchFeild.value;
-  console.log(SearchText);
   LoadData(SearchText)
 }
 
